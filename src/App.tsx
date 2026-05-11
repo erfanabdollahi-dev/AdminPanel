@@ -1,12 +1,11 @@
-
-
+import { BrowserRouter } from "react-router";
+import AdminLayout from "./layouts/admin/AdminLayout";
 function App() {
-
   return (
-    <div className="admin-layout h-screen w-full bg-red-50">
-
-    </div>
-  )
+    <BrowserRouter>
+      <AdminLayout />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

@@ -1,1 +1,63 @@
 @import "tailwindcss";
+
+:root {
+  --sidebar-width: 240px;
+  --header-height: 84px;
+}
+
+@theme {
+  --color-bg-d: #0d0f11;
+  --color-unit-bg-d: #191d23;
+  --color-unit2-bg-d: #262c36;
+  --color-primary : #7b57e0;
+}
+
+@layer components {
+  .admin-layout {
+    @apply h-screen w-full bg-bg-d overflow-hidden pl-5;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-areas: "sidebar header" "sidebar content";
+    gap: 20px;
+  }
+
+  .al-header {
+    @apply flex items-center rounded-lg bg-unit-bg-d justify-between sticky top-0 z-100 h-[var(--header-height)]  px-6 py-5 border-b;
+    grid-area: header;
+  }
+
+  .al-sidebar {
+    @apply bg-unit-bg-d relative flex flex-col w-[var(sidebar-width)] h-screen;
+    grid-area: sidebar;
+  }
+
+  .al-content {
+    @apply rounded-lg overflow-auto;
+    grid-area: content;
+  }
+}
+
+/* Custom scrollbar for main content */
+.al-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.al-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.al-content::-webkit-scrollbar-thumb {
+  background: gray;
+  
+}
+
+.al-content::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
+.al-sidebar:hover{
+  .sidebar-btn-con{
+    scale: 1;
+  }
+}

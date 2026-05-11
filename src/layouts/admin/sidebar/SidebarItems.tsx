@@ -1,15 +1,15 @@
 // SidebarItems.tsx (unchanged, same as before)
 import { RxDashboard } from "react-icons/rx";
-import { 
-  HiShoppingBag, 
-  HiColorSwatch, 
-  HiTag, 
+import {
+  HiShoppingBag,
+  HiColorSwatch,
+  HiTag,
   HiCube,
   HiUserGroup,
   HiChartBar,
   HiCog,
   HiPhotograph,
-  HiClipboardList 
+  HiClipboardList,
 } from "react-icons/hi";
 import SidebarItem from "./SidebarItem";
 
@@ -81,18 +81,29 @@ const SidebarItems = () => {
   ];
 
   return (
-    <ul className="flex flex-col w-full text-white duration-300 h-full ">
-      {sidebarItems.map((item) => (
-        <SidebarItem
-          key={item.label}
-          icon={item.icon}
-          label={item.label}
-          to={item.to}
-          children={item.children}
-        />
+    <ul className="flex flex-col w-full text-white duration-300 h-full overflow-y-auto gap-2 ">
+      {sidebarItems.map((item, index) => (
+        <>
+          <SidebarItem
+            key={item.label}
+            icon={item.icon}
+            label={item.label}
+            to={item.to}
+            children={item.children}
+          />
+          {index < sidebarItems.length - 1 && (
+            <div className="px-4 ">
+              <div
+                className="border-b border-dashed border-transparent w-full"
+                style={{
+                  borderImage:
+                    "linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent) 1",
+                }}
+              ></div>
+            </div>
+          )}
+        </>
       ))}
-
-      
     </ul>
   );
 };

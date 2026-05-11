@@ -40,7 +40,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     return (
       <div className="submenu-parent w-full">
         <button
-          className={`submenu-btn h-14 items-center outline-0 w-full flex ${isChildActive ? "bg-white/20" : "bg-white/0"}`}
+          className={`submenu-btn h-13 items-center outline-0 w-full flex ${isChildActive ? "text-blue-500" : "bg-white/0"}`}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <div className="flex w-full  gap-4 px-5">
@@ -56,7 +56,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         </button>
 
         <div
-          className={`submenu-items-con overflow-hidden   duration-300  ${isOpen ? "max-h-100" : "max-h-0"} pr-9`}
+          className={`submenu-items-con overflow-hidden   duration-300  ${isOpen ? "max-h-100" : "max-h-0"} `}
           style={{}}
         >
           {children.map((child, index) => (
@@ -66,7 +66,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
               style={{
                 opacity: isOpen ? 1 : 0,
                 transform: isOpen ? "translateX(0)" : "translateX(20px)",
-                transitionDelay: isOpen ? `${index * 60}ms` : "0ms",
+                transitionDelay: isOpen ? `${index * 70}ms` : "0ms",
                 transitionProperty: "opacity, transform",
               }}
             >
@@ -87,13 +87,19 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     <NavLink to={to} end={end}>
       {({ isActive }) => (
         <li
-          className={`sidebar-item overflow-hidden relative w-full h-14  ${isActive} flex  items-center gap-3`}
+          className={`sidebar-item overflow-hidden relative w-full h-13 flex  items-center gap-3`}
         >
-          <div className={`flex w-full pr-5 gap-4 `}>
-            <Icon size={22} />
+          <div className={`flex w-full pr-5 h-full items-center gap-4 ${isActive && 'bg-primary/10'} ${isChild && "pr-10"} `}>
+            <Icon
+              size={22}
+              color={isActive && "var(--color-primary ) "}
+              className="duration-200"
+            />
             <span className="font-bold">{label}</span>
           </div>
-          {isActive && <ActiveIndicator />}
+          <div
+            className={`absolute right-0 top-1/2 -translate-y-1/2 w-1 h-full bg-primary rounded-full duration-200 transition-opacity ${isActive ? "opacity-100" : "opacity-0"} `}
+          ></div>
         </li>
       )}
     </NavLink>
@@ -101,15 +107,3 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 };
 
 export default SidebarItem;
-
-const ActiveIndicator = () => {
-  return (
-    // <div className="sidebar-item-active-con absolute w-full h-full flex  ">
-    //   <div className=" bg-primary w-6 rounded-l-full"></div>
-    //   <div className=" w-12 top-0 -translate-y-5  h-12 bg-unit-bg-d rounded-full absolute"></div>
-    //   <div className=" w-12 bottom-0 translate-y-5 h-12 bg-unit-bg-d rounded-full absolute"></div>
-    // </div>
-
-    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-2/3 bg-primary rounded-full"></div>
-  );
-};

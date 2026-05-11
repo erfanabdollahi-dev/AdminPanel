@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --sidebar-width: 240px;
+  --sidebar-width: 260px;
   --header-height: 84px;
 }
 
@@ -30,6 +30,7 @@
   .al-sidebar {
     @apply bg-unit-bg-d relative flex flex-col w-[var(sidebar-width)] h-screen;
     grid-area: sidebar;
+
   }
 
   .al-content {
@@ -39,20 +40,20 @@
 }
 
 /* Custom scrollbar for main content */
-.al-content::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 4px;
 }
 
-.al-content::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.al-content::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: gray;
   
 }
 
-.al-content::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: gray;
 }
 

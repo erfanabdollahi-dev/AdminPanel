@@ -1,40 +1,49 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --sidebar-width: 260px;
   --header-height: 84px;
 }
 
 @theme {
+  --color-bg: #ffffff;
+  --color-unit-bg: #dcdcdd;
+  --color-unit2-d: #f1f3f4;
+
   --color-bg-d: #0d0f11;
-  --color-unit-bg-d: #191d23;
-  --color-unit2-bg-d: #262c36;
-  --color-primary : #7b57e0;
+  --color-unit-d: #191d23;
+  --color-unit2-d-d: #262c36;
+
+  --color-primary: #7b57e0;
 }
 
+@layer base {
+  input, button, textarea, select, h1, h2,h3,h4,p,h5{
+    @apply text-inherit;
+  }
+
+}
 @layer components {
   .admin-layout {
-    @apply h-screen w-full bg-bg-d overflow-hidden pl-5;
+    @apply h-screen w-full   bg-bg dark:bg-bg-d overflow-hidden text-black dark:text-white;
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: var(--header-height) 1fr;
     grid-template-areas: "sidebar header" "sidebar content";
-    gap: 20px;
+    transition: grid-template-columns 0.2s ease;
+    /* gap: 20px; */
   }
 
   .al-header {
-    @apply flex items-center rounded-lg bg-unit-bg-d justify-between sticky top-0 z-100 h-[var(--header-height)]  px-6 py-5 border-b;
+    @apply flex items-center  bg-bg dark:bg-unit-d justify-between sticky top-0 z-100 h-[var(--header-height)]  px-6 py-5 shadow-sm;
     grid-area: header;
   }
 
-  .al-sidebar {
-    @apply bg-unit-bg-d relative flex flex-col w-[var(sidebar-width)] h-screen;
-    grid-area: sidebar;
-
-  }
 
   .al-content {
-    @apply rounded-lg overflow-auto;
+    @apply rounded-lg overflow-auto  ;
     grid-area: content;
   }
 }
@@ -50,15 +59,14 @@
 
 *::-webkit-scrollbar-thumb {
   background: gray;
-  
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background: gray;
 }
 
-.al-sidebar:hover{
-  .sidebar-btn-con{
+.al-sidebar:hover {
+  .sidebar-btn-con {
     scale: 1;
   }
 }

@@ -1,10 +1,26 @@
+import useUIStore from "@/zustand/uiManagementStore";
 import { LuSearch } from "react-icons/lu";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Header = () => {
+  const toggleTheme = useUIStore((state) => state.toggleTheme);
+  const theme = useUIStore((state) => state.theme);
+  console.log(theme);
+
   return (
     <header className="al-header">
-      <div className="al-header-right h-full">
-        <div className="text-white flex items-center px-2 gap-2 h-full bg-gray-600 border-2 border-gray-600 rounded-md focus-within:border-indigo-500 duration-200 transition-colors">
+      <div className="al-header-right h-full flex gap-4">
+        <button
+          onClick={() => toggleTheme()}
+          className={`${theme === "dark" ? "rotate-90" : "rotate-0"} outline-0 duration-400`}
+        >
+          {theme === "light" ? (
+            <MdDarkMode size={30} />
+          ) : (
+            <MdLightMode size={30} />
+          )}
+        </button>
+        <div className=" flex items-center px-2 gap-2 h-full bg-gray-600 border-2 border-gray-600 rounded-md focus-within:border-indigo-500 duration-200 transition-colors">
           <LuSearch size={25} />
           <input
             type="text"
@@ -13,7 +29,7 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="al-header-left h-full text-white">
+      <div className="al-header-left h-full ">
         <div className="flex items-center h-full gap-4">
           <div className="profile-img-con h-full aspect-square rounded-full bg-white ">
             <img src="" alt="" />

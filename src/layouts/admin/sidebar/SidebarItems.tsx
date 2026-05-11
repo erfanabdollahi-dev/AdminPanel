@@ -81,7 +81,7 @@ const SidebarItems = () => {
   ];
 
   return (
-    <ul className="flex flex-col w-full text-white duration-300 h-full overflow-y-auto gap-2 ">
+    <ul className="flex flex-col w-full   h-full overflow-y-auto gap-2 ">
       {sidebarItems.map((item, index) => (
         <>
           <SidebarItem

@@ -40,7 +40,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     return (
       <div className="submenu-parent w-full">
         <button
-          className={`submenu-btn h-13 items-center outline-0 w-full flex ${isChildActive ? "text-blue-500" : "bg-white/0"}`}
+          className={`submenu-btn h-13 items-center outline-0  w-full flex ${isChildActive ? "text-blue-500" : "bg-white/0"}`}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <div className="flex w-full  gap-4 px-5">
@@ -86,10 +86,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   return (
     <NavLink to={to} end={end}>
       {({ isActive }) => (
-        <li
-          className={`sidebar-item overflow-hidden relative w-full h-13 flex  items-center gap-3`}
-        >
-          <div className={`flex w-full pr-5 h-full items-center gap-4 ${isActive && 'bg-primary/10'} ${isChild && "pr-10"} `}>
+        <li className={`sidebar-item `}>
+          <div
+            className={`flex w-full pr-5 h-full items-center gap-4 ${isActive && "bg-primary/10"} ${isChild && "pr-10"} `}
+          >
             <Icon
               size={22}
               color={isActive && "var(--color-primary ) "}

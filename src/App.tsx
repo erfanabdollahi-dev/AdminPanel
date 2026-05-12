@@ -1,14 +1,12 @@
 import { BrowserRouter } from "react-router";
 import AdminLayout from "./layouts/admin/AdminLayout";
-import useUIStore from "./zustand/uiManagementStore";
+import AppThemeWrapper from "./wrapper/AppThemeWrapper";
 function App() {
-    const theme = useUIStore((state) => state.theme);
-
     return (
         <BrowserRouter>
-            <div className={`${theme}`}>
+            <AppThemeWrapper>
                 <AdminLayout />
-            </div>
+            </AppThemeWrapper>
         </BrowserRouter>
     );
 }

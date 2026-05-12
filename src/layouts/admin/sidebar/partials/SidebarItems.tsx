@@ -6,8 +6,8 @@ import React from "react";
 import Line from "@/components/Line";
 
 const SidebarItems = () => {
-    console.log("sidebar closed open");
-
+    console.log("sidebar items");
+    
     return (
         <ul className="sidebar-items-con">
             {sidebarItems.map((item, index) => (

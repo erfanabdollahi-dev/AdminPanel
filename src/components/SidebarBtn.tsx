@@ -4,6 +4,7 @@ import useUIStore from "@/zustand/uiManagementStore";
 const SidebarBtn = () => {
     const toggleSidebar = useUIStore((state) => state.toggleSidebar);
     const sidebarOpen = useUIStore((state) => state.sidebarOpen);
+
     return (
         <div className=" hidden lg:flex toggle-sidebar-btn h-[var(--header-height)]   absolute w-full left-0 z-1000  items-center flex">
             <div className="sidebar-btn-con absolute -translate-x-5 rounded-full scale-0 duration-200 bg-bg dark:bg-bg-d flex items-center justify-center h-10 w-10 left-0">

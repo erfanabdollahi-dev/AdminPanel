@@ -35,13 +35,13 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     const sidebarOpen = useUIStore((state) => state.sidebarOpen);
     const setSidebar = useUIStore((state) => state.setSidebar);
 
-    
     const isChildActive = children?.some((child) => {
         return location.pathname.endsWith(child.to);
     });
 
     useEffect(() => {
         if (!sidebarOpen) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsOpen(false);
         }
     }, [sidebarOpen]);
@@ -50,7 +50,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             setSidebar(true);
         }
     };
-
+    console.log("sidebar item");
     if (children && children.length > 0) {
         return (
             <div className="submenu-parent  " onClick={handleSidebarClick}>
@@ -59,12 +59,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
                     onClick={() => setIsOpen((prev) => !prev)}
                 >
                     <div className="flex w-full  gap-4 px-5">
-                        <Icon size={22} />
+                        <Icon size={24} />
                         <span className="font-bold">{label}</span>
                     </div>
                     <HiChevronDown
                         size={20}
-                        className={` ml-4 transition-transform duration-300 ${
+                        className={` ml-2 transition-transform duration-300 ${
                             isOpen ? "rotate-180" : ""
                         }`}
                     />

@@ -29,6 +29,7 @@
     h3,
     h4,
     p,
+
     h5 {
         @apply text-inherit;
     }

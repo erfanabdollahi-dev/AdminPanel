@@ -10,13 +10,13 @@
             @apply shrink-0;
         }
         .sidebar-top {
-            @apply h-[var(--header-height)] shrink-0  px-6 flex items-center justify-center  w-full;
+            @apply h-[var(--header-height)] shrink-0  px-2 flex items-center   overflow-hidden pt-5  w-full;
         }
         .sidebar-items-con {
-            @apply flex flex-col w-full h-full overflow-y-auto gap-2;
+            @apply flex flex-col w-full h-full overflow-y-auto overflow-x-hidden gap-2 px-2;
         }
         .sidebar-item {
-            @apply overflow-hidden relative w-full h-13 flex  items-center   gap-3;
+            @apply overflow-hidden relative w-full h-13 flex  items-center rounded-md   gap-3;
             .sidebar-item-info {
                 @apply flex w-full pr-5 h-full items-center gap-4;
                 /* span {
@@ -36,9 +36,16 @@
         .active-indicator {
             @apply absolute right-0 top-1/2 -translate-y-1/2 w-1 h-full bg-primary rounded-full duration-200 transition-opacity;
         }
+
+        .sidebar-bottom {
+            @apply h-20  select-none  flex justify-between overflow-hidden  items-center px-6   ;
+        }
     }
     .al-sidebar.sidebar-closed {
         @apply -right-[var(--sidebar-width)] lg:right-0;
+        .sidebar-top > h3 {
+            display: none;
+        }
     }
 }
 
@@ -62,6 +69,15 @@
             }
 
             > svg {
+                display: none;
+            }
+        }
+        .sidebar-bottom {
+            flex-direction: column;
+            gap: 15px;
+            height: 120px;
+            padding-bottom: 15px;
+            div > span {
                 display: none;
             }
         }

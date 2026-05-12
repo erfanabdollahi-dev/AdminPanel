@@ -2,17 +2,15 @@ import { BrowserRouter } from "react-router";
 import AdminLayout from "./layouts/admin/AdminLayout";
 import useUIStore from "./zustand/uiManagementStore";
 function App() {
+    const theme = useUIStore((state) => state.theme);
 
-  const theme = useUIStore((state) => state.theme);
-
-
-  return (
-    <BrowserRouter>
-      <div className={`${theme}`}>
-        <AdminLayout />
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className={`${theme}`}>
+                <AdminLayout />
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

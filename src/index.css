@@ -3,70 +3,96 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --sidebar-width: 260px;
-  --header-height: 84px;
+    --sidebar-width: 260px;
+    --header-height: 84px;
 }
 
 @theme {
-  --color-bg: #ffffff;
-  --color-unit-bg: #dcdcdd;
-  --color-unit2-d: #f1f3f4;
+    --color-bg: #ffffff;
+    --color-unit-bg: #dcdcdd;
+    --color-unit2-d: #f1f3f4;
 
-  --color-bg-d: #0d0f11;
-  --color-unit-d: #191d23;
-  --color-unit2-d-d: #262c36;
+    --color-bg-d: #0d0f11;
+    --color-unit-d: #191d23;
+    --color-unit2-d-d: #262c36;
 
-  --color-primary: #7b57e0;
+    --color-primary: #7b57e0;
 }
 
 @layer base {
-  input, button, textarea, select, h1, h2,h3,h4,p,h5{
-    @apply text-inherit;
-  }
-
+    input,
+    button,
+    textarea,
+    select,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    h5 {
+        @apply text-inherit;
+    }
 }
 @layer components {
-  .admin-layout {
-    @apply h-screen w-full   bg-bg dark:bg-bg-d overflow-hidden text-black dark:text-white;
-    display: grid;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    grid-template-rows: var(--header-height) 1fr;
-    grid-template-areas: "sidebar header" "sidebar content";
-    transition: grid-template-columns 0.2s ease;
-    /* gap: 20px; */
-  }
+    .admin-layout {
+        @apply h-screen w-full   bg-bg dark:bg-bg-d overflow-hidden text-black dark:text-white;
+        display: grid;
 
-  .al-header {
-    @apply flex items-center  bg-bg dark:bg-unit-d justify-between sticky top-0 z-100 h-[var(--header-height)]  px-6 py-5 shadow-sm;
-    grid-area: header;
-  }
+        grid-template-rows: var(--header-height) 1fr;
+        transition: grid-template-columns 0.2s ease;
+        /* gap: 20px; */
+    }
 
+    .al-header {
+        @apply flex items-center  bg-bg dark:bg-unit-d justify-between sticky top-0 z-100 h-[var(--header-height)]  px-6 py-5 shadow-sm;
+        grid-area: header;
+    }
 
-  .al-content {
-    @apply rounded-lg overflow-auto  ;
-    grid-area: content;
-  }
+    .al-content {
+        @apply rounded-lg overflow-auto;
+        grid-area: content;
+    }
 }
 
 /* Custom scrollbar for main content */
 *::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: gray;
+    background: gray;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: gray;
+    background: gray;
 }
 
 .al-sidebar:hover {
-  .sidebar-btn-con {
-    scale: 1;
-  }
+    .sidebar-btn-con {
+        scale: 1;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .admin-layout {
+        grid-template-columns: var(--sidebar-width) 1fr;
+        grid-template-areas: "sidebar header" "sidebar content";
+    }
+
+    .admin-layout.sidebar-closed {
+        grid-template-columns: 80px 1fr;
+    }
+}
+
+/* Mobile styles - only 1fr */
+@media (max-width: 1023px) {
+    .admin-layout {
+        grid-template-columns: 1fr !important;
+        grid-template-areas: " header" " content";
+    }
 }

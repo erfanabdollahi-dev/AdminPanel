@@ -32,7 +32,7 @@ const Header = () => {
       <div className="al-header-left h-full ">
         <div className="flex items-center h-full gap-4">
           <div className="profile-img-con h-full aspect-square rounded-full bg-white ">
-            <img src="" alt="" />
+            <img src="/fasf/asdfsa/fsad/f" alt="" />
           </div>
           <div className="info-con ">
             <p className="text-sm">عرفان عبداللهی</p>

@@ -3,13 +3,67 @@
 @import "@/index.css";
 
 @layer components {
-  .al-sidebar {
-    @apply bg-bg border-l-1 border-gray-500 gap-5    dark:bg-unit-d relative flex flex-col  h-screen;
-    grid-area: sidebar;
-    .sidebar-item{
-        @apply overflow-hidden relative w-full h-13 flex  items-center gap-3;
+    .al-sidebar {
+        @apply bg-bg border-l-1 z-100 duration-200 transition-[right] right-0 fixed lg:relative  border-gray-500 gap-5 w-[var(--sidebar-width)] lg:w-auto  dark:bg-unit-d  flex flex-col  h-screen;
+        grid-area: sidebar;
+        svg {
+            @apply shrink-0;
+        }
+        .sidebar-top {
+            @apply h-[var(--header-height)] shrink-0  px-6 flex items-center justify-center  w-full;
+        }
+        .sidebar-items-con {
+            @apply flex flex-col w-full h-full overflow-y-auto gap-2;
+        }
+        .sidebar-item {
+            @apply overflow-hidden relative w-full h-13 flex  items-center   gap-3;
+            .sidebar-item-info {
+                @apply flex w-full pr-5 h-full items-center gap-4;
+                /* span {
+                    @apply ;
+                } */
+            }
+        }
+        .submenu-parent {
+            @apply w-full;
+            .submenu-btn {
+                @apply h-13 items-center outline-0  w-full flex;
+            }
+            .submenu-items-con {
+                @apply overflow-hidden   duration-300;
+            }
+        }
+        .active-indicator {
+            @apply absolute right-0 top-1/2 -translate-y-1/2 w-1 h-full bg-primary rounded-full duration-200 transition-opacity;
+        }
     }
-  }
-
+    .al-sidebar.sidebar-closed {
+        @apply -right-[var(--sidebar-width)] lg:right-0;
+    }
 }
 
+@media (min-width: 1024px) {
+    .al-sidebar.sidebar-closed {
+        .sidebar-item > .sidebar-item-info {
+            justify-content: center;
+            span {
+                max-width: 0;
+                overflow: hidden;
+            }
+        }
+        .submenu-btn {
+            justify-content: center;
+            > div {
+                justify-content: center;
+                text-align: center;
+                > span {
+                    display: none;
+                }
+            }
+
+            > svg {
+                display: none;
+            }
+        }
+    }
+}

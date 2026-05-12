@@ -33,6 +33,9 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
     const sidebarOpen = useUIStore((state) => state.sidebarOpen);
+    const setSidebar = useUIStore((state) => state.setSidebar);
+
+    
     const isChildActive = children?.some((child) => {
         return location.pathname.endsWith(child.to);
     });
@@ -42,10 +45,15 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             setIsOpen(false);
         }
     }, [sidebarOpen]);
+    const handleSidebarClick = () => {
+        if (!sidebarOpen) {
+            setSidebar(true);
+        }
+    };
 
     if (children && children.length > 0) {
         return (
-            <div className="submenu-parent ">
+            <div className="submenu-parent  " onClick={handleSidebarClick}>
                 <button
                     className={`submenu-btn ${isChildActive ? "text-blue-500" : "bg-white/0"}`}
                     onClick={() => setIsOpen((prev) => !prev)}
